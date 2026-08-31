@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button onclick="greet()">click me</button>
+    <button onclick="convertToFahrenheit(25)" >click</button>
+     <button onclick="convertToCelcius(86)" >click</button>
+     <button onclick="convertTemperature(86,'C')" >click</button>
+
+<script>
+function convertTemperature(degree , unit){
+if(unit==='C'){
+unit= (degree-32)*5/9;
+        console.log(unit);
+}else if(unit==='F'){
+    unit = (degree *9/5)+32;
+    console.log(unit);
+}
+else {
+    console.log('error chooose "C" or "F');
+}
+}
+
+  function convertToCelcius(Fahrenheit){
+        celcius = (Fahrenheit-32)*5/9;
+        console.log(celcius);
+    }
+
+    function convertToFahrenheit(celcius){
+        Fahrenheit = (celcius*9/5)+32;
+        console.log(Fahrenheit);
+    }
+
+    function greet(name){
+if(!name){
+        console.log('Hi there!');
+      }
+
+      else{
+        console.log(`Hello ${name}`);
+      }    
+    }
+    
+</script>
+
+</body>
+</html>

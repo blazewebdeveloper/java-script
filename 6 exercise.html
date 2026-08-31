@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercise of 6</title>
+</head>
+<body>
+    <script>
+        const hour = 16;
+        const name='bishal ulta hxm'
+        const age = 60;
+        const holiday = true;
+        const random = Math.round(Math.random());
+        let result;
+        const guess = 'head';
+        // for time
+        if(hour>=6 && hour<=12){
+            console.log(`good morning ${name}`);
+        }
+        else if(hour>=13 && hour<=17){
+            console.log(`good afternoon ${name}`);
+        }
+        else{
+            console.log(`good night ${name}`);
+        }
+        // for dicount in age in holiday condition 
+        if((age<=6 || age>=60)&& !holiday){
+            result ='Head';
+        }
+        else {
+           result = 'Tail';
+        }
+
+        //for random
+        if(random<=0.5){
+            console.log('head');
+        }else{
+            console.log('tail');
+        }
+        // comparing guess 
+        if(guess === result){
+            console.log(`you win`);
+        }
+        else {
+            console.log(`you lose`);
+        }
+    </script>
+</body>
+</html>

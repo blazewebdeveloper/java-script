@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+</head>
+<body>
+    <script>
+        
+      /*
+       const product ={
+        name : 'socks',
+        price: 1090
+       };
+       console.log(product);
+       console.log(product.name);
+       console.log(product.price);
+       
+const product2={
+    name : 'shirt',
+    'delivery-time': '1 day',
+    rating:{
+        stars : 4.5 ,
+        count : 87
+    },
+    fun : function function1() {
+        console.log('function inside object');
+    }
+};
+console.log(product2);
+console.log(product2.name);
+console.log(product2['name']);
+console.log(product2['delivery-time']);
+console.log(product2.rating.count);
+product2.fun();
+console.log(typeof console.log);
+
+console.log(JSON.stringify(product2));
+const jsonstring= JSON.stringify(product2);
+console.log(JSON.parse(jsonstring));
+*/
+console.log('hello'.length);
+console.log('hello'.toLocaleUpperCase());
+const object={
+    message : 'hello'
+};
+
+const object2 = object;
+object.message='good moring';
+console.log(object);
+console.log(object2);
+// kina same vayo tw?? jabki object2=object garim suppose to say hello because const object says hello it is because object ley memory ma save na bhai referene linxa jasley garda teslai kei change hanne bitikai refrence ni change hunca , ani object2 ley object ko reference copy gareko hoo not its memory tei vayera reference change hune bitikai object2 ni change vayo.
+const object3 ={
+    message :'good moring'
+};
+console.log(object===object3);
+console.log(object==object2);
+// It is because object are the references and not kept in then computer memory so thats why object and object3 has the difference refrence so thats why it sates false .in
+const object4 ={
+    message :'hello',
+    price: 799
+};
+//shortcut for object
+const{message,price}=object4;
+console.log(message);
+console.log(price);
+
+const object5={
+    message,
+    //shorthand of object
+    method(){
+        console.log('method');
+    }
+};
+console.log(object5);
+object5.method();
+
+let object6={
+    name:'bat'
+};
+let object7=object6;
+object6.name='hello';
+console.log(object6.name);
+console.log(object7);
+const lamo = 8;
+const lamo2 =8;
+console.log(lamo===lamo2);
+    </script>
+</body>
+</html>

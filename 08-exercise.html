@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise of 8</title>
+</head>
+<body>
+    
+<script>
+    //8a
+    const product={
+        name:'shirt',
+        price:3000,
+        'delivery-time':'3 days'
+    };
+    console.log(product);
+
+    //8b
+    product.price+=500;
+    console.log(product.price);
+
+    //8c
+    console.log(product['delivery-time']);
+
+    //8d 
+    const product2={
+        name:'shirt',
+        price: 3500
+    };
+    function comparePrice(){
+        if(product.price>product2.price){
+            return product2.price;
+        }else{
+            return product.price;
+        }
+    }
+    console.log(comparePrice());
+
+//8e 
+ function isSameProduct() {
+  console.log(
+    product.name === product2.name &&
+    product.price === product2.price
+  );
+}
+isSameProduct();
+
+//8f 
+console.log('Good Morning'.toLowerCase());
+//8g
+console.log('test'+'test');
+
+
+
+</script>
+
+</body>
+</html>

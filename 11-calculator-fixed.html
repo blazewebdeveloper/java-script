@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+.calculator{
+    border-radius: 15px 10px;
+    background-color: rgb(0,0,0);
+    font-family: Arial, Helvetica, sans-serif;
+    height: 600px;
+    width: 400px;
+
+}
+.section{
+    height:100px ;
+    width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}
+p.display{
+    height: 50px;
+    width: 100%;
+    background-color: rgb(221, 220, 220);
+    margin: 0;
+    padding: 10px;
+    color: black;
+    font-size: 35px;
+    text-align: right;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.calculator .section button{
+     display: flex;
+      align-items: center;
+      justify-content: center;
+    height: 55px;
+    width: 55px;
+    padding: 25px;
+    font-size: 20px;
+    color: white;
+    border-radius: 50%;
+    border: none;
+    background-color:rgb(95, 95, 95) ;
+    margin: 10px;
+    cursor: pointer;
+     
+}
+
+.calculator .section button.special{
+    background-color: rgb(248, 191, 2);
+}
+</style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="section"><p class="display"></p></div>
+        <div class="section">
+        <button  onclick="calculator('1')">1</button>
+        <button  onclick="calculator('2')" >2</button>
+        <button onclick="calculator('3')">3</button>
+        <button class="special" onclick="calculator('+')">+</button>
+    </div>
+    <div class="section">
+        <button  onclick="calculator('4')">4</button>
+        <button onclick="calculator('5')" >5</button>
+        <button  onclick="calculator('6')">6</button>
+        <button class="special" onclick="calculator('-')">-</button>
+    </div>
+    <div class="section">
+        <button class="" onclick="calculator('7')">7</button>
+        <button class="" onclick="calculator('8')" >8</button>
+        <button class="" onclick="calculator('9')">9</button>
+        <button class="special" onclick="calculator('*')">*</button>
+    </div>
+      <div class="section">
+        <button class="" onclick="calculator('0')">0</button>
+        <button class="" onclick="calculator('.')" >.</button>
+        <button class="" onclick="result()">=</button>
+        <button class="special" onclick="calculator('/')">/</button>
+      </div>
+       <div class="section">
+  <button onclick="reset()">Clear</button>
+ <button onclick="backspace()">⌫</button>
+ <button onclick="calculator('(')">(</button>
+                <button onclick="calculator(')')">)</button>
+    </div>
+    </div>
+    <script>
+        let calculation=JSON.parse(localStorage.getItem('core'))||'';
+        document.querySelector('.display').innerHTML=calculation;
+
+         function calculator(a){
+         if(calculation.length>=50){alert('limit exceed');}
+         else{
+        calculation+=a;
+        document.querySelector('.display').innerHTML=calculation;
+        localStorage.setItem('core',JSON.stringify(calculation)); } }
+        
+        function reset(){
+            calculation='';
+             localStorage.removeItem('core');
+             document.querySelector('.display').innerHTML=calculation;
+        }
+
+        function result(){
+            try{
+            if(!calculation){
+                alert('Nothing to calculate');
+                return;
+            }
+            //starting and ending with operator except + and -
+            if(/^[*/)]/.test(calculation) || /[+\-*/.(]$/.test(calculation)){
+                alert('Incorrect format');
+                return;
+            }
+            //allowing operator , numbere and parenthesis
+            if(!/^[0-9+\-*/()./s]+$/.test(calculation)){
+                alert('Invalid characters');
+                return;
+            }
+            //for preventing double operator
+            if(/^[+\-*/.]{2,}/.test(calculation)){
+                alert('Invalid expression secquence');
+                return;
+            }
+
+            const result = eval(calculation);
+            if(isNaN(result)){
+                alert('invalid expression');
+                reset();
+                return;
+            }
+
+            
+
+              let finalResult;
+        if (!calculation.includes('.')) {
+            const bigIntExpr = calculation.replace(/\d+/g, m => `${m}n`);
+            finalResult = eval(bigIntExpr).toString(); // BigInt result
+        } else {
+            finalResult = eval(calculation).toFixed(12).replace(/\.?0+$/, ''); // decimal with trimming
+        }
+
+
+            
+            calculation=finalResult.toString();
+        document.querySelector('.display').innerHTML=calculation;
+        localStorage.setItem('core',JSON.stringify(calculation));
+        return calculation;
+        console.log(calculation);
+        }catch(error){
+            alert('calculation error');
+            reset();
+            return;     }
+
+
+    }
+        function backspace(){
+            if(calculation.length>0){
+                calculation=calculation.slice(0 , -1);
+                document.querySelector('.display').innerHTML=calculation;
+                localStorage.setItem('core',JSON.stringify(calculation));
+                
+            }
+        }
+// here is  a bug in the key board tooo many number hanera enter garda kam gardaina
+        function keyboard(event){
+            const e= event.key;
+            if(/[0-9]/.test(e)){
+                calculator(e);
+            }
+            else if(['+','-','.','*','/','(',')'].includes(e)){    
+                calculator(e);
+            }
+            else if(e==='Enter'){
+         result();
+            }
+            else if(e==='Backspace'){
+                backspace();
+            }
+            else if(e==='Escape'){
+              reset();
+            }
+
+              document.activeElement.blur();
+        }
+        document.addEventListener('keydown', keyboard);
+     
+    </script>
+</body>
+</html>

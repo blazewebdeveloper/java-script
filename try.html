@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //basics
+    /*
+    const regex = /[abc]/;
+    const regd=/^a\d[a-z]{2,}z$/;
+    const rem=/^\d[a-zA-Z]{2}@\d$/;
+    const em=/^[a-z]{3}[1-9][0-9]{2}!$/
+    const jem=/^[A-Z]{2}\d{4}[!?]$/
+    const them=/[A-Z]{3}\d{4,6}[!?]$/
+    const reg=/\d/;
+    const reg1=/[a-z]{2}/;
+    const reg2=/^az$/;
+    console.log(em.test("abc1000!"));
+console.log(reg.test("a"));
+console.log(rem.test("apple"));
+console.log(reg.test("b2"));
+console.log(reg.test("az"));
+console.log(reg.test("azz"));
+console.log(reg.test("ab"));
+console.log(reg.test("z")); */
+//advance
+/*
+const ret = /(\d{4})-(0[1-9]|1[0-2])-(0[0-9]|[12][0-9]|3[01])/;
+
+const lemba = " Today is (2025-07-17)";
+const match =lemba.match(ret);
+if (match) {
+  console.log('Year:', match[1]);   // "2025"
+  console.log('Month:', match[2]); // "07"
+  console.log('Day:', match[3]);   // "17"
+}
+else { console.log('NO date found')};
+*/
+/*
+const reg = /^([a-z])([a-z])([a-z])\3\2\1$/;
+
+console.log(reg.test("pammop")); // ✅ true
+console.log(reg.test("abcdef")); // ❌ false
+console.log(reg.test("racear")); // ✅ true
+console.log(reg.test("pammap"));
+*/
+/*
+const str = "[first] [second] [third]";
+const laz= /^(.*?[a-z]+) (.*?[a-z]+) (.*?[a-z]+)$/;
+const greedy=/^([a-z]+) ([a-z]+) ([a-z]+)$/
+console.log(str.match(laz));
+console.log(str.match(greedy));
+*/
+/*
+const sentence = "<div>Hello</div><div>World</div>";
+const greedy =/<div>(.*)<\/div>/ ;
+  const lazy=/<div>(.*?)<\/div>/g;
+    console.log(sentence.match(greedy));
+    console.log(sentence.match(lazy));
+*/
+/*
+const html = "<div><span>First</span></div><div><span>Second</span></div>";
+const ikl= [...html.matchAll(/<div>(.*?)<\/div>/g)];
+
+const result=ikl.map(match =>{
+  const lilu= match[0];
+  const jul=lilu.match(/<span>(.*?)<\/span>/);
+    return {
+      div: lilu,
+      span: jul ? jul[1] : null
+    };
+});
+console.log(result); */
+/*
+const nam="User: Alex, Age: 23, Country: Nepal";
+const jht= /User:\s(?<name>[A-Z][a-z]+),\sAge:\s(?<age>\d{2}),\sCountry:\s(?<Country>[A-Z][a-z]+)/;
+const mat=nam.match(jht);
+console.log(mat.groups);
+console.log(mat[1]);
+console.log(mat[2]);
+console.log(mat[3]);
+ */ //naming group challenges//
+ /*
+const input = "Name: John Doe, Age: 28, City: Sydney";
+const dek=/Name:\s(?<name>[A-Z][a-z]+\s[A-Z][a-z]+),\sAge:\s(?<age>\d{2}),\sCity:\s(?<country>[A-Z][a-z]+)/
+  const mat=input.match(dek);
+  console.log("Name=",mat[1]);
+  console.log("Age=",mat[2]);
+  console.log("City=",mat[3]);
+  const email = "Contact: maria.smith2025@example.edu";
+const dk=/Contact:\s(?<user>[a-z]+\.[a-z0-9]+)@(?<domain>[a-z]+)\.(?<TLD>[a-z]{3})/;
+  const ku=email.match(dk);
+  console.log("username=",ku[1]);
+  console.log("domain=",ku[2]);
+  console.log("TLD=",ku[3]);
+const date = "Event Date: 2025-07-18";
+const at=/Event Date:\s(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/
+  const ta=date.match(at);
+  console.log("Year=",ta[1]);
+  console.log("Months=",ta[2]);
+  console.log("Day=",ta[3]);
+const product = "Product: Keyboard, Price: $49.99, Stock: 150";
+const pdt=/Product:\s(?<saman>[A-Z][a-z]+),\sPrice:\s(?<price>\$\d{2}\.\d{2}),\sStock:\s(?<srock>\d{3})/ ;
+  const ruu=product.match(pdt);
+  console.log("product=",ruu[1]);
+  console.log("price=",ruu[2]);
+  console.log("stock=",ruu[3]); */
+  /* challenge 1 lookbehind
+const st = "Total: $120, Tip: $15, Discount: 10";
+const reg=/((?<=\$)\d+)/g;
+console.log(st.match(reg));
+const str = "Follow @john and mike for updates.";
+const rg=/((?<=\@)[a-z]+)/g;
+console.log(str.match(rg));
+const url = "Visit https://example.com for details.";
+const rt=/(?<=https:\/\/)[a-z]+/g;
+console.log(url.match(rt));
+const nums = "-10 20 -30 40";
+const lt=/(?<=\-)\d+/g;
+console.log(nums.match(lt));
+
+*
+const text = "I love #JavaScript and #coding but not #123 or #9gag!";
+const reg =/(?<=\#)[a-zA-Z\d]+/g;
+const rg=/(?<=\#)[a-zA-z]+/g;
+console.log(text.match(reg));
+console.log(text.match(rg));
+console.log(Math.pow(9,99));
+console.log(Math.sqrt(-2));
+console.log(Math.log(9));
+*/
+
+
+ </script>
+</body>
+</html>

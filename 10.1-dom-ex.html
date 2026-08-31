@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise</title>
+  <style>
+    .js-cart{
+      padding: 10px;
+      background-color: rgb(255 ,216,20);
+      color: black;
+      font-weight: 300px;
+      font-family: Arial, Helvetica, sans-serif;
+      border: none;
+      border-radius: 50px 50px;
+      cursor: pointer;
+      width: 150px;
+    }
+    .js-req{
+      background-color: black;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+      padding: 12px;
+      width: 120px;
+      margin-right: 18px;
+    }
+    .js-sch{
+       background-color: rgb(230,230,230);
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+      padding: 12px;
+      width: 150px;
+    }
+.is-toggle{
+   background-color: rgb(230,230,230);
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      padding: 10px 15px;
+}
+.hula{
+   background-color: rgb(230,230,230);
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      padding: 10px 15px;
+}
+.mula{
+   background-color: rgb(230,230,230);
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      padding: 10px 15px;
+}
+.lamo{
+  background-color: black;
+  color: white;
+}
+.toggle{
+  background-color: rgb(230,230,230);
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      padding: 10px 15px;
+
+}
+.jabo{
+  background-color: black;
+  color: white;
+}
+.gu{ background-color: rgb(230,230,230);
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      padding: 10px 15px;
+}
+
+.lado{
+  background-color: black;
+  color: wheat;
+}
+
+  </style>
+</head>
+<body>
+  <p>10a</p>
+  <button class="js-cart">
+    Add to Cart
+  </button>
+  <p>10b</p>
+  <button class="js-req">
+    Request now
+  </button>
+  <button class="js-sch">Schedule for later</button>
+ <p>10c</p>
+ <button class="js-button">Test</button>
+ <p>10d</p>
+ <button class="is-toggle" onclick="wow()">Gaming</button>
+ 
+<button class="hula" onclick="jow()">Music</button>
+<button class="mula" onclick="thow()">Tech</button>
+
+<p>10e</p>
+<button class="toggle paglu" onclick="toggle('.paglu')">Gaming</button>
+ 
+<button class="toggle maglu" onclick="toggle('.maglu')">Music</button>
+<button class="toggle jaglu" onclick="toggle('.jaglu')">Tech</button>
+
+<p>using toggle</p>
+<button class="gu" onclick="ul()">Gaming</button>
+
+<script>
+  function ul(){
+            const bt=document.querySelector('.gu');
+            if(bt){
+                bt.classList.toggle('lado');
+            }
+        }
+function toggle(selector){
+  const button=document.querySelector(selector);
+  if(!button.classList.contains('jabo')){
+    chata();
+    button.classList.add('jabo');
+  }else{
+    button.classList.remove('jabo');
+  }
+}
+function chata(){
+  const ex=document.querySelector('.jabo');
+  if(ex){
+    ex.classList.remove(jabo);
+  }
+}
+
+
+
+ function wow(){
+  const button=document.querySelector('.is-toggle');
+if(!button.classList.contains('lamo')){
+  button.classList.add('lamo');
+}else{
+  button.classList.remove('lamo');
+}
+  }
+  function jow(){
+    const button=document.querySelector('.hula');
+    
+if(!button.classList.contains('lamo')){
+  button.classList.add('lamo');
+}else{
+  button.classList.remove('lamo');
+}
+  }
+
+  function thow(){
+     const button=document.querySelector('.mula');
+if(!button.classList.contains('lamo')){
+  button.classList.add('lamo');
+}else{
+  button.classList.remove('lamo');
+}
+  }
+  
+</script>
+
+</body>
+</html>

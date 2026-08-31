@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+            //const date = "Event Date: 2025-07-18";
+//const at=/Event Date:\s(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/
+  //const ta=date.match(at);
+ // console.log("Year=",ta[1]);
+  //console.log("Months=",ta[2]);
+  //console.log("Day=",ta[3]);
+
+//const reg=/(?<timestamp>(?<year>\[20[0-9][0-9])-(?<month>0[1-9]|1[0-2])(?<Day>0[1-9]|[1-2][0-9]|3[012]\s)(?<Hour>0[1-9]|1[0-9]|2[0-4]\:)(?<Minute>[0-5][0-9]|60\:)(?<Section>[0-5][0-9]|60))\])\s(?<username>[a-zA-Z\d_]+)\sjoined the match\./
+    //const reg=/(?<timestamp>\[\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}\])\s(?<username>[a-zA-Z\d_]+)\sjoined the match\./
+//const ex=a.match(reg);
+//const e=/\[(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})\s(?<Hour>\d{2})\:(?<Min>\d{2})\:(?<sec>\d{2})\]\s\((?<username>\[a-zA-Z\d_]+)\)\sjoined\sthe\smatch\./; console.log(e.test("[2025-07-18 14:23:56] (Player_101) joined the match."));
+//const e = /\[(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})\s(?<Hour>\d{2}):(?<Min>\d{2}):(?<sec>\d{2})\] \((?<username>[a-zA-Z\d_]+)\) joined the match\./;
+//console.log(e.test("[2025-07-18 14:23:56] (Player_101) joined the match."));
+/*
+{
+  "timestamp": "2025-07-18 14:25:01",
+  "actor": "NovaQueen",
+  "action": "killed",
+  "target": "Player_101",
+  "weapon": "Kar98k"
+}
+
+
+ const a="[2025-07-18 14:23:56] (Player_101) joined the match."
+const b="[2025-07-18 14:24:12] (xX_DragonSlayer_Xx) picked up M416."
+const c="[2025-07-18 14:25:01] (NovaQueen) killed (Player_101) with Kar98k."
+const reg=/(?<timestamp>\[(?<year>20[0-9][0-9])-(?<month>0[1-9]|1[0-2])-(?<day>0[1-9]|[1-2][0-9]|3[012])\s(?<Hour>0[1-9]|1[0-9]|2[0-4])\:(?<minute>[0-5][0-9]|60)\:(?<sec>[0-5][0-9]|60)\])\s\((?<username>[a-zA-Z_\d]+)\)\sjoined\sthe\smatch\./
+    const h=a.match(reg);
+    console.log("timestamp:",h[1]);
+    console.log("username:",h[8]);
+    
+    const eg=/(?<timestamp>\[(?<year>20[0-9][0-9])-(?<month>0[1-9]|1[0-2])-(?<day>0[1-9]|[1-2][0-9]|3[012])\s(?<Hour>0[1-9]|1[0-9]|2[0-4])\:(?<minute>[0-5][0-9]|60)\:(?<sec>[0-5][0-9]|60)\])\s\((?<username>[a-zA-Z_\d]+)\)\s(?<action>[a-z]+)\sup\s(?<weapon>[a-zA-z\d]+)\./
+        const f=b.match(eg);
+        console.log("timestamp:",f[1]);
+    console.log("username:",f[8]);
+    console.log("action:",f[9]);
+    console.log("weapon:",f[10]);
+        const g=/(?<timestamp>\[(?<year>20[0-9][0-9])-(?<month>0[1-9]|1[0-2])-(?<day>0[1-9]|[1-2][0-9]|3[012])\s(?<Hour>0[1-9]|1[0-9]|2[0-4])\:(?<minute>[0-5][0-9]|60)\:(?<sec>[0-5][0-9]|60)\])\s\((?<actor>[a-zA-Z_\d]+)\)\s(?<action>[a-z]+)\s\((?<username>[a-zA-Z_\d]+)\)\swith\s(?<weapon>[a-zA-Z\d]+)\./;
+   const bih=c.match(g);
+console.log("timestamp:",bih[1]);
+   console.log("actor:",bih[8]);
+   console.log("action:",bih[9]);
+   console.log("target:",bih[10]);
+   console.log("weapon:",bih[11]);
+*/ 
+/*
+🎯 Your mission:
+Write a regex that extracts:
+
+The timestamp
+
+The status: "SUCCESS" or "FAILED"
+
+The username
+
+The IP address
+
+Once you're done, we’ll detect failed attempts from the same IP (hint for a security log filter 🔒).
+const a="[2025-07-18 14:30:12] LOGIN SUCCESS: user=admin, ip=192.168.1.101"
+const b="[2025-07-18 14:31:07] LOGIN FAILED: user=root, ip=192.168.1.105"
+const c="[2025-07-18 14:31:45] LOGIN FAILED: user=admin, ip=192.168.1.105"
+const d="[2025-07-18 14:32:03] LOGIN SUCCESS: user=guest, ip=192.168.1.109"
+
+const e=/(?<timestamp>\[(?<year>20[0-9][0-9])-(?<month>0[1-9]|1[0-2])-(?<day>0[1-9]|[1-2][0-9]|3[012])\s(?<Hour>0[1-9]|1[0-9]|2[0-4])\:(?<minute>[0-5][0-9]|60)\:(?<sec>[0-5][0-9]|60)\])\sLOGIN\s(?<Status>[A-Z]+)\:\suser=(?<username>[a-z]+),\sip=(?<address>192\.168\.1\.1\d{2})/
+const p=a.match(e);
+const q=b.match(e);
+const r=c.match(e);
+const s=d.match(e);
+console.log("timestamp:",p[1]);
+console.log("status:",p[8]);
+console.log("username:",p[9]);
+console.log("IP address:",p[10]);
+console.log("timestamp:",q[1]);
+console.log("status:",q[8]);
+console.log("username:",q[9]);
+console.log("IP address:",q[10]);
+console.log("timestamp:",r[1]);
+console.log("status:",r[8]);
+console.log("username:",r[9]);
+console.log("IP address:",r[10]);
+console.log("timestamp:",s[1]);
+console.log("status:",s[8]);
+console.log("username:",s[9]);
+console.log("IP address:",s[10]);
+if (q.groups.Status === "FAILED" && r.groups.Status === "FAILED" && q.groups.address === r.groups.address) {
+  console.warn("🚨 Possible brute-force attempt from:", q.groups.address);
+}
+
+Write one regex that extracts:
+
+Log level (ERROR, WARNING, INFO)
+
+Timestamp
+
+Message body (the rest after timestamp)
+
+*/
+/*
+const a="[ERROR] [2025-07-18 14:45:32] FileNotFound: /assets/img/logo.png";
+const b="[WARNING] [2025-07-18 14:46:01] Disk usage at 91%";
+const c="[INFO] [2025-07-18 14:47:10] User john logged in from 192.168.0.55";
+ 
+const reg=/\[(?<Log>[A-Z]+)\]\s(?<timestamp>\[(?<year>20[0-9][0-9])-(?<month>0[1-9]|1[0-2])-(?<day>0[1-9]|[1-2][0-9]|3[012])\s(?<Hour>0[1-9]|1[0-9]|2[0-4])\:(?<minute>[0-5][0-9]|60)\:(?<sec>[0-5][0-9]|60)\])\s(?<message>FileNotFound\:\s\/[a-z]+\/img\/logo\.png)/;
+    const re=/\[(?<Log>[A-Z]+)\]\s(?<timestamp>\[(?<year>20[0-9][0-9])-(?<month>0[1-9]|1[0-2])-(?<day>0[1-9]|[1-2][0-9]|3[012])\s(?<Hour>0[1-9]|1[0-9]|2[0-4])\:(?<minute>[0-5][0-9]|60)\:(?<sec>[0-5][0-9]|60)\])\s(?<message>.+)/;//pro tips use .+ to show message.
+        const e=/\[(?<Log>[A-Z]+)\]\s(?<timestamp>\[(?<year>20[0-9][0-9])-(?<month>0[1-9]|1[0-2])-(?<day>0[1-9]|[1-2][0-9]|3[012])\s(?<Hour>0[1-9]|1[0-9]|2[0-4])\:(?<minute>[0-5][0-9]|60)\:(?<sec>[0-5][0-9]|60)\])\s(?<message>User\s[a-z]+\s[a-z]+\sin\sfrom\s192\.168\.[01]\.\d{2})/;
+    const p=a.match(reg);
+    const q=b.match(re);
+    const r=c.match(e);
+    console.log("Log Level:",p.groups.Log);
+    console.log("Timestamp:",p.groups.timestamp);
+console.log("Message body:",p.groups.message);
+ console.log("Log Level:",q.groups.Log);
+    console.log("Timestamp:",q.groups.timestamp);
+console.log("Message body:",q.groups.message);
+ console.log("Log Level:",r.groups.Log);
+    console.log("Timestamp:",r.groups.timestamp);
+console.log("Message body:",r.groups.message);
+*/
+//🎯 Extract:
+
+//Log Level
+
+//Timestamp
+
+//Error Type or Username or Message (from the body)
+
+//For errors: extract filename and line number too (if present)
+/*
+const a="[CRASH] [2025-07-18 14:50:01] UncaughtException: TypeError at line 45 in main.js"
+const b="[INFO] [2025-07-18 14:51:22] Player 'NeoX' disconnected."
+const c="[WARN] [2025-07-18 14:52:37] Memory usage is above 90%"
+
+const reg=/\[(?<Log>[A-Z]+)\]\s(?<timestamp>\[(?<year>20\d{2})-(?<month>0[1-9]|1[0-2])-(?<day>0[1-9]|[12][0-9]|3[01])\s(?<Hour>0[0-9]|1[0-9]|2[0-4]):(?<minute>[0-5][0-9]|60):(?<sec>[0-5][0-9]|60)\])\sUncaughtException:\s(?<errorType>\w+)\s+at\s+line\s+(?<line>\d+)\s+in\s+(?<file>\w+\.js)/;
+
+    const rg=/\[(?<Log>[A-Z]+)\]\s(?<timestamp>\[(?<year>20[0-9][0-9])-(?<month>0[1-9]|1[0-2])-(?<day>0[1-9]|[1-2][0-9]|3[012])\s(?<Hour>0[1-9]|1[0-9]|2[0-4])\:(?<minute>[0-5][0-9]|60)\:(?<sec>[0-5][0-9]|60)\])\sPlayer\s(?<username>.+)\sdisconnected\./
+        const e=/\[(?<Log>[A-Z]+)\]\s(?<timestamp>\[(?<year>20[0-9][0-9])-(?<month>0[1-9]|1[0-2])-(?<day>0[1-9]|[1-2][0-9]|3[012])\s(?<Hour>0[1-9]|1[0-9]|2[0-4])\:(?<minute>[0-5][0-9]|60)\:(?<sec>[0-5][0-9]|60)\])\s(?<message>.+)/
+    const p=a.match(reg);
+    const q=b.match(rg);
+    const r=c.match(e);
+       console.log("Log Level:",p.groups.Log);
+    console.log("Timestamp:",p.groups.timestamp);
+console.log("ErrorType:",p.groups.error);
+ console.log("Log Level:",q.groups.Log);
+    console.log("Timestamp:",q.groups.timestamp);
+console.log("Username:",q.groups.username);
+ console.log("Log Level:",r.groups.Log);
+    console.log("Timestamp:",r.groups.timestamp);
+console.log("Message body:",r.groups.message);
+*/
+/* [CRITICAL] [2025-07-18 14:55:01] FatalError: GameEngine crashed
+StackTrace:
+    at renderFrame (engine.js:102)
+    at updateLoop (game.js:88)
+    at start (main.js:12)
+
+    🎯 Extract:
+
+Log level
+
+Timestamp
+
+Error type
+
+Stack function calls with file and line numbers
+*/
+/*
+const a =`[CRITICAL] [2025-07-18 14:55:01] FatalError: GameEngine crashed
+StackTrace:
+    at renderFrame (engine.js:102)
+    at updateLoop (game.js:88)
+    at start (main.js:12)
+`;
+const reg=/\[(?<Log>[A-Z]+)\]\s(?<timestamp>\[(?<year>20[0-9][0-9])-(?<month>0[1-9]|1[0-2])-(?<day>0[1-9]|[1-2][0-9]|3[012])\s(?<Hour>0[1-9]|1[0-9]|2[0-4])\:(?<minute>[0-5][0-9]|60)\:(?<sec>[0-5][0-9]|60)\])\s+FatalError:\s+(?<Error>[a-zA-z]+\s[a-z]+)\nStackTrace\:+\n(?<Function>.+\((?<call>[a-z]+)(?<file>\.js)\:(?<line>\d+)\)\n(?<Function2>.+\((?<call2>[a-z]+)(?<file2>\.js)\:(?<line2>\d+)\))\n(?<Function3>.+\((?<call3>[a-z]+)(?<file3>\.js)\:(?<line3>\d+)\)))/
+    const p=a.match(reg);
+console.log("Log Level:",p.groups.Log);
+console.log("Timestamp:",p.groups.timestamp);
+console.log("Error:",p.groups.Error);
+console.log("Functions:",p.groups.Function);
+console.log("Functions2:",p.groups.Function2);
+console.log("Functions3:",p.groups.Function3);
+console.log("Function call:",p.groups.call);
+console.log("Function file:",p.groups.file);
+console.log("Function line:",p.groups.line);
+console.log("Function call2:",p.groups.call2);
+console.log("Function file2:",p.groups.file2);
+console.log("Function line2:",p.groups.line2);
+console.log("Function call3:",p.groups.call3);
+console.log("Function file3:",p.groups.file3);
+console.log("Function line3:",p.groups.line3);
+*/
+
+/*
+const reg=/(?<Function>(?<function1>(?<timestamp>\[(?<year>20[0-9][0-9])-(?<month>0[1-9]|1[0-2])-(?<day>0[1-9]|[1-2][0-9]|3[012])\s(?<Hour>0[1-9]|1[0-9]|2[0-4])\:(?<minute>[0-5][0-9]|60)\:(?<sec>[0-5][0-9]|60)\])\s(?<Username>.+)\:(?<message>.+\n.+\n.+))\n+(?<function2>(?<timestamp2>\[(?<year2>20[0-9][0-9])-(?<month2>0[1-9]|1[0-2])-(?<day2>0[1-9]|[1-2][0-9]|3[012])\s(?<Hour2>0[1-9]|1[0-9]|2[0-4])\:(?<minute2>[0-5][0-9]|60)\:(?<sec2>[0-5][0-9]|60)\])\s(?<Username2>.+)\:(?<message2>.+))\n+(?<function3>(?<timestamp3>\[(?<year3>20[0-9][0-9])-(?<month3>0[1-9]|1[0-2])-(?<day3>0[1-9]|[1-2][0-9]|3[012])\s(?<Hour3>0[1-9]|1[0-9]|2[0-4])\:(?<minute3>[0-5][0-9]|60)\:(?<sec3>[0-5][0-9]|60)\])\s(?<Username3>.+)\:(?<message3>.+\n*)))/ */
+  /*  
+    const chat = `[2025-07-18 15:10:01] (DragonSlayer): Hey team, here's the strategy:
+- Hold the hill.
+- Snipe from behind rocks.
+
+[2025-07-18 15:10:45] (NovaQueen): Got it!
+
+[2025-07-18 15:11:05] (ShadowWalker): Wait for me... I'm still looting.
+[2025-07-18 15:11:20] (DragonSlayer): MOVE MOVE MOVE!`;
+    const reg=/\[(?<timestamp>[^\]]+)\]\s\((?<username>[^\)]+)\)\:\s(?<message>.*)(?=\n\[\d{4}-\d{2}-\d{2}|\n*$)/gs;
+        const ex=/\[(?<timestamp>[^\]]+)\]\s\((?<username>[^\)]+)\)\:\s(?<message>.*?)(?=\n\[20\d{2}-\d{2}-\d{2}|\n*$)/gs;
+ const x=/\[(?<timestamp>[^\]]+)\]\s\((?<username>[^\)]+)\)\:\s(?<message>[\s\S]*?)(?=\n\[20\d{2}-\d{2}-\d{2}|\n*$)/g;
+
+for(const m of p= [...chat.matchAll(reg)]){
+  console.log("Greedy:", m.groups);
+}
+for(const m of p= [...chat.matchAll(x)]){
+  console.log("Safe Lazy:", m.groups);
+}
+for(const m of p= [...chat.matchAll(ex)]){
+  console.log("Lazy:", m.groups);
+}
+ 
+
+[2025-07-18 15:10:45] (B): Another message`;
+
+//  /gs vaneko select all with extra new line in sort anything
+//*/
+
+/* the bug free one beat use to use lazy than greedy .
+const chat = `[2025-07-18 15:10:01] (DragonSlayer): Here's our plan:
+- Hold the hill.
+- Snipe from behind rocks.
+Remember what happened at [2025-07-17 14:00:00]? We were ambushed!
+
+[2025-07-18 15:10:45] (NovaQueen): Got it!
+
+[2025-07-18 15:11:05] (ShadowWalker): Wait for me... I'm still looting.
+
+[2025-07-18 15:11:20] (DragonSlayer): MOVE MOVE MOVE!`;
+
+const correct = /\[(?<timestamp>[^\]]+)\]\s\((?<username>[^)]+)\):\s(?<message>[\s\S]*?)(?=\n\[20\d{2}-\d{2}-\d{2}|\n*$)/g;
+
+const matches = [...chat.matchAll(correct)];
+for (const m of matches) {
+  console.log("timestamp:", m.groups.timestamp);
+  console.log("Username:", m.groups.username);
+  console.log("Message:", m.groups.message.trim());
+  
+}
+  */
+ /* the difference
+ const chat = `[2025-07-18 15:10:01] (DragonSlayer): Remember [2025-07-18 15:10:45]? We were ambushed!
+[2025-07-18 15:11:05] (NovaQueen): Got it!`;
+
+const reg = /\[(?<timestamp>[^\]]+)\]\s\((?<username>[^\)]+)\)\:\s(?<message>.*)(?=\n\[\d{4}-\d{2}-\d{2}|\n*$)/gs;
+
+const correct = /\[(?<timestamp>[^\]]+)\]\s\((?<username>[^)]+)\):\s(?<message>[\s\S]*?)(?=\n\[20\d{2}-\d{2}-\d{2}|\n*$)/g;
+
+console.log("=== Using reg (greedy) ===");
+for (const m of chat.matchAll(reg)) {
+  console.log(m.groups);
+}
+
+console.log("\n=== Using correct (lazy) ===");
+for (const m of chat.matchAll(correct)) {
+  console.log(m.groups);
+}
+
+*/
+ //the difference between .*? and [\s\S]*? for multiline.
+ /*
+ const chat = `[2025-07-18 15:10:01] (A): First line
+Second line
+
+[2025-07-18 15:10:45] (B): Another message
+Another line of B
+
+[2025-07-18 15:11:00] (C): Final short message`;
+
+const greedy = /\[(?<timestamp>[^\]]+)\]\s\((?<username>[^)]+)\):\s(?<message>.*)(?=\n\[20\d{2}-\d{2}-\d{2}|\n*$)/gs;
+const lazy   = /\[(?<timestamp>[^\]]+)\]\s\((?<username>[^)]+)\):\s(?<message>.*?)(?=\n\[20\d{2}-\d{2}-\d{2}|\n*$)/gs; //works but if not s then dont take new line better use safe lazy sometime may give bug.
+const safe   = /\[(?<timestamp>[^\]]+)\]\s\((?<username>[^)]+)\):\s(?<message>[\s\S]*?)(?=\n\[20\d{2}-\d{2}-\d{2}|\n*$)/g;
+
+console.log("=== GREEDY ===");
+[...chat.matchAll(greedy)].forEach(m => console.log(m.groups));
+
+console.log("\n=== LAZY ===");
+[...chat.matchAll(lazy)].forEach(m => console.log(m.groups));
+
+console.log("\n=== SAFE LAZY [\\\\s\\\\S] ===");
+[...chat.matchAll(safe)].forEach(m => console.log(m.groups));
+*/
+/*
+const chat=`[2025-07-18 15:10:01] (DragonSlayer): Hey team, remember [2025-07-18 14:00:00]? That was crazy!
+[2025-07-18 15:10:45] (NovaQueen): Yep, and [2025-07-18 14:05:30] when ShadowWalker got trapped?
+[2025-07-18 15:11:05] (ShadowWalker): Hah! Stop reminding me...
+`
+const reg=/\[(?<timestamp>[^\]]+)\]\s\((?<username>[^\)]+)\)\:\s(?<message>[\s\S]*?)(?=\n\[20\d{2}-\d{2}-\d{2}|\n*$)/gs;
+    const p=[...chat.matchAll(reg)];
+    for(const g of p){
+        let mat=g.groups.message.trim();
+        mat=mat.match(/\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\]/g);
+        console.log('edit:',mat);
+        console.log('Lazy:',g.groups);
+
+    }
+        */
+  /*     
+const chat = `[2025-07-19 12:00:01] (CyberWolf): Ready to roll? 🐺
+Check logs from [2025-07-18 11:30:00] — still gives me chills...
+
+[2025-07-19 12:01:15] (BattleMage): ⚡ Let’s hit hard!
+
+Oops... [timestamp missing] (Ghost): 👻 boo...
+
+[2025-07-19 12:02:44] (CyberWolf): Go go go!
+Wait! [2025-07-19 12:00:01] friendly fire last time 😵‍💫
+
+[2025-07-19 12:03:00] (BattleMage): Rushing now!
+`;
+const reg=/\[(?<timestamp>[^\]]+)\]\s\((?<username>[^\)]+)\)\:\s(?<message>(?!.*\[timestamp\smissing\])[\s\S]*?)(?=\n\[\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}|\n*$)/gs;
+ const p=[...chat.matchAll(reg)];
+    for(const g of p){
+    //  let mess=g.groups.message.trim();
+  //   mess=mess.replace(/\[[a-zA-z\s]+\]/g,'');
+   //   console.log('edit message:',mess);
+      console.log('Lazy:',g.groups);
+    }
+  *//*  const chat = `[2025-07-19 12:00:01] (CyberWolf): Ready to roll? 🐺
+Check logs from [2025-07-18 11:30:00] — still gives me chills...
+
+[2025-07-19 12:01:15] (BattleMage): ⚡ Let’s hit hard!
+
+Oops... [timestamp missing] (Ghost): 👻 boo...
+
+[2025-07-19 12:02:44] (CyberWolf): Go go go!
+Wait! [2025-07-19 12:00:01] friendly fire last time 😵‍💫
+
+[2025-07-19 12:03:00] (BattleMage): Rushing now!
+`;
+
+const reg = /\[(?<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\] \((?<username>[^\)]+)\): (?<message>[\s\S]*?)(?=\n\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\]|\n*$)/g;
+
+const p = [...chat.matchAll(reg)];
+
+for (const g of p) {
+  let mes=g.groups.message;
+  mes=mes.replace(/\[[a-zA-Z\s]+\]/,'');
+  console.log('Timestamp:', g.groups.timestamp);
+  console.log('Username:',g.groups.username);
+  console.log('Message:',mes);
+}
+*/
+  const chat = `[2025-07-20 10:00:00] (SniperX): Locked and loaded.
+Be careful out there.
+
+[unknown] (Ghost): Shhh...
+
+[2025-07-20 10:01:30] (): System alert: 🔔 Reinforcements arriving.
+
+[2025-07-20 10:02:15] (Commander): All units move to sector 7.
+
+[2025-07-20 10:03:00] (Medic): Healing up...
+Check your ammo 💉
+
+[2025-07-20 10:03:59] (SniperX): Another one bites the dust.
+
+[timestamp missing] (Ghost): You can’t see me 😶
+`;
+
+const reg = /\[(?<timestamp>(20\d{2}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}))\]\s+\((?<username>[^)]+)\):\s(?<message>[\s\S]*?)(?=^\[20\d{2}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\] \([^)]+\):|\n*\[|$)/g; // The main logic : \n*\[|$
+
+const matches = [...chat.matchAll(reg)];
+for (const match of matches) {
+ // console.log('⏰ Timestamp:', match.groups.timestamp);
+//  console.log('👤 Username:', match.groups.username);
+ // console.log('💬 Message:', match.groups.message);
+ console.log('lazy:',match.groups);
+
+}
+
+
+    </script>
+
+</body>
+</html>
